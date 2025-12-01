@@ -1,4 +1,8 @@
+import { useContext } from "react"
+import ContentContext from "../utils/ContentContext";
+
 function Home() {
+  const contents = useContext(ContentContext);
   const homeContent = {
     minHeight: "100vh",  // full viewport height
     width: "100%",       // full width
@@ -9,10 +13,12 @@ function Home() {
     minHeight: "calc(100vh - 200px)" // Because of the navbar
   }
 
+  if (!contents) return <h1>Loading...</h1>;
+
   return (
     <div style={homeContent}>
-      <h1>Hello! Welcome to Tonicist Association! </h1>
-      <h4>Short description about the Tonicist Association.</h4>
+      <h1>{contents.title}</h1>
+      <h4>{contents.subtitle}</h4>
     </div>
   )
 }
