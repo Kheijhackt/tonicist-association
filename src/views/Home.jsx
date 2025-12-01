@@ -1,4 +1,3 @@
-
 function Home() {
   const homeContent = {
     minHeight: "100vh",  // full viewport height
@@ -7,13 +6,14 @@ function Home() {
     flexDirection: "column",
     alignItems: "center", // horizontal centering
     justifyContent: "center", // vertical centering
-    minHeight: "calc(100vh - 200px)" // Because of the navbar and footer
+    minHeight: "calc(100vh - 200px)" // Because of the navbar
   }
 
   return (
-    <>
-      <h1 style={homeContent}>Hello! Welcome to Tonicist Association! </h1>
-    </>
+    <div style={homeContent}>
+      <h1>Hello! Welcome to Tonicist Association! </h1>
+      <h4>Short description about the Tonicist Association.</h4>
+    </div>
   )
 }
 

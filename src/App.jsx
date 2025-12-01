@@ -6,7 +6,6 @@ import Home from './views/Home'
 import Events from './views/Events'
 import Recitals from './views/Recitals'
 import About from './views/About'
-import Footer from './components/Footer'
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
               <Route path='/about' element={<About />} />
             </Routes>
           </div>
-          <Footer />
         </div>
       </Router>
     </>
