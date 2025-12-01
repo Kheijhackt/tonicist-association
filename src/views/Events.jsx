@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import ContentContext from "../utils/ContentContext";
+import CountdownTimer from "../components/CountdownTimer";
 
 function Events() {
   const rawContents = useContext(ContentContext);  
@@ -26,6 +27,14 @@ function Events() {
           borderRadius: "12px",
         }}
       ></iframe>
+      <br />
+      <br />
+      {contents.timerText && contents.timerGoal && (
+        <>
+          <h4>{contents.timerText}</h4>
+          <CountdownTimer goalDate={contents.timerGoal} />
+        </>
+      )}
     </div>
   );
 }
