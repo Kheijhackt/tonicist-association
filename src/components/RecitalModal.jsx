@@ -83,6 +83,8 @@ function RecitalModal({ videoId, title, date, description, onClose }) {
             backgroundColor: "var(--green-primary)",
             color: "white",
             fontWeight: 600,
+            marginLeft: "auto",
+            display: "block"
           }}
         >
           Close
