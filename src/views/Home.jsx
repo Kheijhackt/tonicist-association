@@ -2,7 +2,9 @@ import { useContext } from "react"
 import ContentContext from "../utils/ContentContext";
 
 function Home() {
-  const contents = useContext(ContentContext);
+  const rawContents = useContext(ContentContext);
+  const contents = rawContents.home;  
+
   const homeContent = {
     minHeight: "100vh",  // full viewport height
     width: "100%",       // full width
@@ -12,8 +14,6 @@ function Home() {
     justifyContent: "center", // vertical centering
     minHeight: "calc(100vh - 200px)" // Because of the navbar
   }
-
-  if (!contents) return <h1>Loading...</h1>;
 
   return (
     <div style={homeContent}>

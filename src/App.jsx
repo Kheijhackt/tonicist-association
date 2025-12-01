@@ -12,38 +12,57 @@ import About from './views/About'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [contents, setContents] = useState([]);
-  const apiEndpoint = "https://gist.githubusercontent.com/akxin-laxinbault/d070cf044f5d695414171a8580669375/raw/tonicist-contents.json";
+  const [contents, setContents] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const apiEndpoint =
+    "https://gist.githubusercontent.com/akxin-laxinbault/d070cf044f5d695414171a8580669375/raw/tonicist-contents.json";
 
   useEffect(() => {
-    async function fetchData  () {
+    async function fetchData() {
       const data = await getApi(apiEndpoint);
-      console.log(data);
-      if(data) setContents(data);
+      if (data) {
+        setContents(data);
+      }
+      setLoading(false);
     }
     fetchData();
   }, []);
 
+  // DO NOT RENDER ANY PAGE UNTIL CONTENTS EXIST
+  if (loading || !contents) {
+    return (
+      <div style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "1.5rem",
+        fontWeight: 600
+      }}>
+        Loading...
+      </div>
+    );
+  }
+
   return (
-    <>
-      <ContentContext.Provider value={contents}>
-        <Router>
-          <div className='App'>
-            <NavigationBar />
-            <div className='content'>
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/events' element={<Events />} />
-                <Route path='/recitals' element={<Recitals />} />
-                <Route path='/faqs' element={<Faqs />} />
-                <Route path='/about' element={<About />} />
-              </Routes>
-            </div>
+    <ContentContext.Provider value={contents}>
+      <Router>
+        <div className="App">
+          <NavigationBar />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/recitals" element={<Recitals />} />
+              <Route path="/faqs" element={<Faqs />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
           </div>
-        </Router>
-      </ContentContext.Provider>
-    </>
-  )
+        </div>
+      </Router>
+    </ContentContext.Provider>
+  );
 }
 
-export default App
+export default App;

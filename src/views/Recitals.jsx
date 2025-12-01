@@ -1,30 +1,20 @@
 import { useState } from "react";
 import RecitalCard from "../components/RecitalCard";
 import RecitalModal from "../components/RecitalModal";
+import { useContext } from "react";
+import ContentContext from "../utils/ContentContext";
 
 function Recitals() {
   const [selected, setSelected] = useState(null);
 
-  const recitals = [
-    {
-      videoId: "OTi4beKKj-o",
-      title: "Recital 1",
-      date: "2024-02-01",
-      description:
-        "This recital features classical works performed by our senior students. Long description can go here — it will scroll inside the modal without affecting the video area. Add program notes, performers, and timestamps if needed. This recital features classical works performed by our senior students. Long This recital features classical works performed by our senior students. Long This recital features classical works performed by our senior students. Long This recital features classical works performed by our senior students. Long This recital features classical works performed by our senior students. Long This recital features classical works performed by our senior students. Long",
-    },
-    {
-      videoId: "L27eQpcAGyM",
-      title: "Recital 2",
-      date: "2024-01-15",
-      description:
-        "A wonderful showcase of intermediate piano students during January. Performer list, pieces, location details, and judges' comments can be written here.",
-    },
-  ];
+  const rawContents = useContext(ContentContext);
+
+  const contents = rawContents.recitals;
+  const recitals = contents.videos;
 
   return (
     <>
-      <h1>Recital Logs</h1>
+      <h1>{contents.title}</h1>
 
       <div
         style={{
