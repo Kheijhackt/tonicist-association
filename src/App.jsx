@@ -7,6 +7,7 @@ import ContentContext from './utils/ContentContext'
 import Home from './views/Home'
 import Events from './views/Events'
 import Recitals from './views/Recitals'
+import Forms from './views/Forms'
 import Faqs from './views/Faqs'
 import About from './views/About'
 import { useEffect, useState } from 'react'
@@ -55,6 +56,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/events" element={<Events />} />
               <Route path="/recitals" element={<Recitals />} />
+              <Route path="/forms" element={<Forms />} />
               <Route path="/faqs" element={<Faqs />} />
               <Route path="/about" element={<About />} />
             </Routes>
