@@ -1,0 +1,32 @@
+.about-staff-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  width: 100%;
+  justify-content: center;
+}
+
+.about-staff-info {
+  text-align: center;
+  min-width: 200px;
+}
+
+.about-staff-desc {
+  flex: 1;
+  max-width: 600px;
+  text-align: justify;
+}
+
+/* RESPONSIVE FOR PHONES */
+@media (max-width: 768px) {
+  .about-staff-container {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .about-staff-desc {
+    text-align: center;
+    max-width: 90%;
+  }
+}
