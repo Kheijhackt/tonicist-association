@@ -1,6 +1,7 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../index.css';
 
 function NavigationBar() {
   const navStyles = {
