@@ -28,11 +28,11 @@ function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
         />
 
         <h3 style={{ marginBottom: "4px", color: "var(--green-dark)" }}>
-          {name}
+          {role}
         </h3>
 
         <p style={{ fontWeight: 600, color: "var(--green-primary)", marginBottom: 0 }}>
-          {role}
+          {name}
         </p>
       </div>
 
