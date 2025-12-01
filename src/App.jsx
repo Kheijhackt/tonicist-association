@@ -3,6 +3,7 @@ import NavigationBar from './components/NavigationBar'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { getApi } from './utils/api'
 import ContentContext from './utils/ContentContext'
+import Background from './components/Background'
 
 import Home from './views/Home'
 import Events from './views/Events'
@@ -49,7 +50,8 @@ function App() {
   return (
     <ContentContext.Provider value={contents}>
       <Router>
-        <div className="App">
+        <Background />
+        <div className="App" style={{ position: "relative", zIndex: 1 }}>
           <NavigationBar />
           <div className="content">
             <Routes>
