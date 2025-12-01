@@ -33,7 +33,7 @@ function Faqs() {
               alignItems: "center",
             }}
           >
-            <span>{faq.question}</span>
+            <h6>{faq.question}</h6>
             <span style={{ fontWeight: "bold" }}>{openIndex === index ? "-" : "+"}</span>
           </div>
 
