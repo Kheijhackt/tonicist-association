@@ -18,7 +18,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const apiEndpoint = 
-    `https://gist.githubusercontent.com/akxin-laxinbault/d070cf044f5d695414171a8580669375/raw/tonicist-contents.json?timestamp=${Date.now()}`;
+    `${import.meta.env.VITE_CONTENTS_API}?timestamp=${Date.now()}`;
 
   useEffect(() => {
     async function fetchData() {
