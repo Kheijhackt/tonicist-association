@@ -43,9 +43,9 @@ function Faqs() {
               <p style={{ marginBottom: "10px" }}>{faq.answer}</p>
 
               {/* Render PDF ONLY if there is a value */}
-              {faq.pdf && faq.pdf.trim() !== "" && (
+              {faq.pdfPath && faq.pdfPath.trim() !== "" && (
                 <iframe
-                  src={faq.pdf}
+                  src={faq.pdfPath}
                   title="FAQ PDF"
                   style={{
                     width: "100%",

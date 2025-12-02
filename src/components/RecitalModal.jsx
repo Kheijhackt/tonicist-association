@@ -1,4 +1,4 @@
-function RecitalModal({ videoId, title, date, description, onClose }) {
+function RecitalModal({ videoId, title, date, description, pdfPath, onClose }) {
   if (!videoId) return null;
 
   return (
@@ -17,7 +17,6 @@ function RecitalModal({ videoId, title, date, description, onClose }) {
       }}
       onClick={onClose}
     >
-      {/* Modal box */}
       <div
         style={{
           backgroundColor: "white",
@@ -25,12 +24,11 @@ function RecitalModal({ videoId, title, date, description, onClose }) {
           borderRadius: "12px",
           maxWidth: "800px",
           width: "90%",
-          maxHeight: "90vh",     // 🔥 KEEPS SIZE FIXED
-          overflowY: "auto",     // 🔥 ENABLE FULL SCROLL
+          maxHeight: "90vh",
+          overflowY: "auto",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Title */}
         <h2 style={{ marginBottom: "10px" }}>{title}</h2>
         <p style={{ color: "#555", marginBottom: "10px" }}>{date}</p>
 
@@ -38,7 +36,7 @@ function RecitalModal({ videoId, title, date, description, onClose }) {
         <div
           style={{
             position: "relative",
-            paddingTop: "56.25%", // 16:9 ratio
+            paddingTop: "56.25%",
             width: "100%",
             marginBottom: "20px",
           }}
@@ -71,7 +69,21 @@ function RecitalModal({ videoId, title, date, description, onClose }) {
           {description}
         </p>
 
-        {/* Close button */}
+        {/* PDF section */}
+        {pdfPath && pdfPath.trim() !== "" && (
+          <iframe
+            src={pdfPath}
+            style={{
+              width: "100%",
+              height: "500px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+              marginBottom: "15px",
+            }}
+            title="PDF Viewer"
+          ></iframe>
+        )}
+
         <button
           onClick={onClose}
           style={{
@@ -84,7 +96,7 @@ function RecitalModal({ videoId, title, date, description, onClose }) {
             color: "white",
             fontWeight: 600,
             marginLeft: "auto",
-            display: "block"
+            display: "block",
           }}
         >
           Close

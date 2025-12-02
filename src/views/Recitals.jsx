@@ -39,6 +39,7 @@ function Recitals() {
         videoId={selected?.videoId}
         title={selected?.title}
         description={selected?.description}
+        pdfPath={selected?.pdfPath}
         onClose={() => setSelected(null)}
       />
     </>
