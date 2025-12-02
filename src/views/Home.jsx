@@ -18,7 +18,9 @@ function Home() {
   return (
     <div style={homeContent}>
       <h1>{contents.title}</h1>
-      <h4>{contents.subtitle}</h4>
+      <h4 style={{ whiteSpace: "pre-line" }}>
+        {contents.subtitle}
+      </h4>
     </div>
   )
 }
