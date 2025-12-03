@@ -1,12 +1,13 @@
 export function convertDrivePdfToEmbedLink(driveLink) {
   if (!driveLink) return "";
 
+  // Only process if it's a Google Drive link
+  if (!driveLink.includes("drive.google.com")) return driveLink;
+
   // Robust regex to match the file ID in various Drive URL formats
   const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)(\/|$|\?)/);
 
-  if (!match || !match[1]) {
-    return "";
-  }
+  if (!match || !match[1]) return driveLink;
 
   const fileId = match[1];
 
@@ -17,10 +18,13 @@ export function convertDrivePdfToEmbedLink(driveLink) {
 export function convertDriveImageToEmbedLink(driveLink) {
   if (!driveLink) return "";
 
+  // Only process if it's a Google Drive link
+  if (!driveLink.includes("drive.google.com")) return driveLink;
+
   // Extract the file ID from the Drive link
   const match = driveLink.match(/\/d\/([a-zA-Z0-9_-]+)(\/|$|\?)/);
 
-  if (!match || !match[1]) return "";
+  if (!match || !match[1]) return driveLink;
 
   const fileId = match[1];
 
