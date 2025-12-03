@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { convertDrivePdfToEmbedLink } from "../utils/linksCleaner";
 
 const CollapsibleList = ({ items, fieldMap }) => {
   // fieldMap = { heading: "question" or "title", content: "answer" or "textContent", pdf: "pdfPath" }
@@ -32,7 +33,7 @@ const CollapsibleList = ({ items, fieldMap }) => {
                 <p style={{ marginBottom: "10px" }}>{content}</p>
                 {pdfPath && pdfPath.trim() !== "" && (
                   <iframe
-                    src={pdfPath}
+                    src={convertDrivePdfToEmbedLink(pdfPath)}
                     title={`PDF-${index}`}
                     style={styles.pdf}
                   />

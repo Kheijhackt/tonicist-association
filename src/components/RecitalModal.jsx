@@ -1,5 +1,8 @@
+import { convertDrivePdfToEmbedLink } from "../utils/linksCleaner";
+
 function RecitalModal({ videoId, title, date, description, pdfPath, onClose }) {
   if (!videoId) return null;
+  pdfPath = pdfPath ? convertDrivePdfToEmbedLink(pdfPath) : null;
 
   return (
     <div
