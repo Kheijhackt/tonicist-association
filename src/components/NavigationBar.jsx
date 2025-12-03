@@ -1,8 +1,8 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../index.css';
-import icon from '../assets/tonicist-icon.jpg';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../index.css";
+import icon from "../assets/tonicist-icon.jpg";
 
 function NavigationBar() {
   const navStyles = {
@@ -18,7 +18,7 @@ function NavigationBar() {
   };
 
   return (
-    <Navbar 
+    <Navbar
       bg="success"
       variant="dark"
       expand="lg"
@@ -28,7 +28,7 @@ function NavigationBar() {
       <Container>
         <Navbar.Brand as={Link} to="/" style={brandStyles}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <img 
+            <img
               src={icon}
               alt="Brand Icon"
               style={{ width: "32px", height: "32px", objectFit: "contain" }}
@@ -39,11 +39,21 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/events" style={navStyles}>Events</Nav.Link>
-            <Nav.Link as={Link} to="/recitals" style={navStyles}>Recitals</Nav.Link>
-            <Nav.Link as ={Link} to="forms" style={navStyles}>Forms</Nav.Link>
-            <Nav.Link as={Link} to="/faqs" style={navStyles}>FAQs</Nav.Link>
-            <Nav.Link as={Link} to="/about" style={navStyles}>About</Nav.Link>
+            <Nav.Link as={Link} to="/events" style={navStyles}>
+              Events
+            </Nav.Link>
+            <Nav.Link as={Link} to="/recitals" style={navStyles}>
+              Recitals
+            </Nav.Link>
+            <Nav.Link as={Link} to="/resources" style={navStyles}>
+              Resources
+            </Nav.Link>
+            <Nav.Link as={Link} to="/faqs" style={navStyles}>
+              FAQs
+            </Nav.Link>
+            <Nav.Link as={Link} to="/about" style={navStyles}>
+              About
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -51,4 +61,4 @@ function NavigationBar() {
   );
 }
 
-export default NavigationBar
+export default NavigationBar;

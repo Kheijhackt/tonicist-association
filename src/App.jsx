@@ -1,24 +1,25 @@
-import './App.css'
-import NavigationBar from './components/NavigationBar'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { getApi } from './utils/api'
-import ContentContext from './utils/ContentContext'
-import Background from './components/Background'
+import "./App.css";
+import NavigationBar from "./components/NavigationBar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { getApi } from "./utils/api";
+import ContentContext from "./utils/ContentContext";
+import Background from "./components/Background";
 
-import Home from './views/Home'
-import Events from './views/Events'
-import Recitals from './views/Recitals'
-import Forms from './views/Forms'
-import Faqs from './views/Faqs'
-import About from './views/About'
-import { useEffect, useState } from 'react'
+import Home from "./views/Home";
+import Events from "./views/Events";
+import Recitals from "./views/Recitals";
+import Resources from "./views/Resources";
+import Faqs from "./views/Faqs";
+import About from "./views/About";
+import { useEffect, useState } from "react";
 
 function App() {
   const [contents, setContents] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const apiEndpoint = 
-    `${import.meta.env.VITE_CONTENTS_API}?timestamp=${Date.now()}`;
+  const apiEndpoint = `${
+    import.meta.env.VITE_CONTENTS_API
+  }?timestamp=${Date.now()}`;
 
   useEffect(() => {
     async function fetchData() {
@@ -34,14 +35,16 @@ function App() {
   // DO NOT RENDER ANY PAGE UNTIL CONTENTS EXIST
   if (loading || !contents) {
     return (
-      <div style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "1.5rem",
-        fontWeight: 600
-      }}>
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "1.5rem",
+          fontWeight: 600,
+        }}
+      >
         <h3>Loading...</h3>
       </div>
     );
@@ -58,7 +61,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/events" element={<Events />} />
               <Route path="/recitals" element={<Recitals />} />
-              <Route path="/forms" element={<Forms />} />
+              <Route path="/resources" element={<Resources />} />
               <Route path="/faqs" element={<Faqs />} />
               <Route path="/about" element={<About />} />
             </Routes>

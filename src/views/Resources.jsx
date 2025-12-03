@@ -5,15 +5,19 @@ import CollapsibleList from "../components/CollapsibleList";
 function Faqs() {
   const rawContents = useContext(ContentContext);
 
-  const contents = rawContents.faqs;
-  const faqs = contents.items;
+  const contents = rawContents.resources;
+  const resources = contents.items;
 
   return (
     <>
       <h1>{contents.title}</h1>
       <CollapsibleList
-        items={faqs}
-        fieldMap={{ heading: "question", content: "answer", pdf: "pdfPath" }}
+        items={resources}
+        fieldMap={{
+          heading: "textHeader",
+          content: "textContent",
+          pdf: "pdfPath",
+        }}
       />
     </>
   );
