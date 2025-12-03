@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import ContentContext from "../utils/ContentContext";
+import SocMedIcons from "../components/SocMedIcons";
 
 function Home() {
   const rawContents = useContext(ContentContext);
@@ -21,6 +22,16 @@ function Home() {
       <h4 style={{ whiteSpace: "pre-line" }}>
         {contents.subtitle}
       </h4>
+      <div
+        style={{
+          position: "absolute",
+          bottom: "20px", // distance from bottom
+          left: "50%",    // center horizontally
+          transform: "translateX(-50%)", // truly center
+        }}
+      >
+        <SocMedIcons />
+      </div>
     </div>
   )
 }
