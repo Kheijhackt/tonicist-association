@@ -1,7 +1,9 @@
-// BackgroundImage.jsx
 import React from "react";
+import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
 
 const BackgroundImage = ({ photoPath }) => {
+  if (photoPath) photoPath = convertDriveImageToEmbedLink(photoPath);
+
   const wrapperStyle = {
     position: "fixed",
     top: 0,

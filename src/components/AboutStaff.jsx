@@ -1,7 +1,10 @@
 import "../styles/AboutStaff.css";
+import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
 
 function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
   const isLeft = picPosition === "left";
+
+  if (imgSrc) imgSrc = convertDriveImageToEmbedLink(imgSrc);
 
   return (
     <div
@@ -31,7 +34,13 @@ function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
           {role}
         </h3>
 
-        <p style={{ fontWeight: 600, color: "var(--green-primary)", marginBottom: 0 }}>
+        <p
+          style={{
+            fontWeight: 600,
+            color: "var(--green-primary)",
+            marginBottom: 0,
+          }}
+        >
           {name}
         </p>
       </div>

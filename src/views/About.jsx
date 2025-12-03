@@ -3,13 +3,15 @@ import { useContext } from "react";
 import ContentContext from "../utils/ContentContext";
 
 function About() {
-  const rawContents = useContext(ContentContext);  
+  const rawContents = useContext(ContentContext);
   const contents = rawContents.about;
   const staffMembers = contents.staff;
 
   return (
     <>
-      <h1 style={{ paddingBottom: "100px", textAlign: "center" }}>{contents.title}</h1>
+      <h1 style={{ paddingBottom: "100px", textAlign: "center" }}>
+        {contents.title}
+      </h1>
 
       {staffMembers.map((member, index) => (
         <AboutStaff
