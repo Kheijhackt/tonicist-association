@@ -9,6 +9,7 @@ import Home from "./views/Home";
 import Events from "./views/Events";
 import Recitals from "./views/Recitals";
 import Resources from "./views/Resources";
+import Gallery from "./views/Gallery";
 import Faqs from "./views/Faqs";
 import About from "./views/About";
 import { useEffect, useState } from "react";
@@ -62,6 +63,7 @@ function App() {
               <Route path="/events" element={<Events />} />
               <Route path="/recitals" element={<Recitals />} />
               <Route path="/resources" element={<Resources />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/faqs" element={<Faqs />} />
               <Route path="/about" element={<About />} />
             </Routes>

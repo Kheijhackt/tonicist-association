@@ -48,6 +48,9 @@ function NavigationBar() {
             <Nav.Link as={Link} to="/resources" style={navStyles}>
               Resources
             </Nav.Link>
+            <Nav.Link as={Link} to="/gallery" style={navStyles}>
+              Gallery
+            </Nav.Link>
             <Nav.Link as={Link} to="/faqs" style={navStyles}>
               FAQs
             </Nav.Link>
