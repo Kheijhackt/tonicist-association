@@ -9,7 +9,7 @@ function Recitals() {
 
   const rawContents = useContext(ContentContext);
 
-  const contents = rawContents.recitals;
+  const contents = rawContents.performances;
   const recitals = contents.videos;
 
   return (
