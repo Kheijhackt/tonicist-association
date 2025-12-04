@@ -96,8 +96,13 @@ export default function DisplayGallery({ images }) {
               cursor: "pointer",
               borderRadius: 6,
               objectFit: "cover",
+              transition: "transform 0.3s ease", // smooth scaling
             }}
             onClick={() => openModal(idx)}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.05)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           />
         ))}
       </div>
