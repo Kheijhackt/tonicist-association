@@ -123,20 +123,36 @@ export default function Admin() {
       <h1>Admin Panel</h1>
 
       {/* Dropdown to select active editor */}
-      <select
-        value={activeSection}
-        onChange={(e) => setActiveSection(e.target.value)}
-        style={{ marginBottom: 20, padding: "5px 10px" }}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: 20,
+        }}
       >
-        <option value="home">Home</option>
-        <option value="events">Events</option>
-        <option value="performances">Performances</option>
-        <option value="resources">Resources</option>
-        <option value="groupPhotos">Gallery - Group Photos</option>
-        <option value="funnyMoments">Gallery - Funny Moments</option>
-        <option value="faqs">FAQs</option>
-        <option value="about">About</option>
-      </select>
+        <select
+          value={activeSection}
+          onChange={(e) => setActiveSection(e.target.value)}
+          style={{
+            padding: "8px 12px",
+            borderRadius: 8,
+            border: "1px solid #ccc",
+            outline: "none",
+            backgroundColor: "#fff",
+            fontSize: "16px",
+            cursor: "pointer",
+          }}
+        >
+          <option value="home">Home</option>
+          <option value="events">Events</option>
+          <option value="performances">Performances</option>
+          <option value="resources">Resources</option>
+          <option value="groupPhotos">Gallery - Group Photos</option>
+          <option value="funnyMoments">Gallery - Funny Moments</option>
+          <option value="faqs">FAQs</option>
+          <option value="about">About</option>
+        </select>
+      </div>
 
       {/* Render only the selected editor */}
       {sections[activeSection]}
