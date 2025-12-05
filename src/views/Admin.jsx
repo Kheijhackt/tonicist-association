@@ -5,6 +5,7 @@ import PerformancesEditor from "./admin/components/PerformancesEditor";
 import ResourcesEditor from "./admin/components/ResourcesEditor";
 import GroupPhotosEditor from "./admin/components/GroupPhotosEditor";
 import FunnyMomentsEditor from "./admin/components/FunnyMomentsEditor";
+import FaqsEditor from "./admin/components/FaqsEditor";
 
 const GIST_ID = import.meta.env.VITE_GIST_ID;
 const FILE_NAME = "tonicist-contents.json";
@@ -93,6 +94,11 @@ export default function Admin() {
         onChange={(funnyMoments) =>
           setData({ ...data, gallery: { ...data.gallery, funnyMoments } })
         }
+      />
+
+      <FaqsEditor
+        faqs={data.faqs}
+        onChange={(faqs) => setData({ ...data, faqs })}
       />
 
       <br />
