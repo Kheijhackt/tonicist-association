@@ -6,7 +6,7 @@ export default function AboutEditor({ about, onChange }) {
     onChange({ ...about, staff: updated });
   }
 
-  // Add new staff at top
+  // Add new staff at the end
   function addStaff() {
     const newStaff = {
       name: "",
@@ -14,7 +14,7 @@ export default function AboutEditor({ about, onChange }) {
       img: "",
       description: "",
     };
-    const updated = [newStaff, ...about.staff];
+    const updated = [...about.staff, newStaff]; // <-- append at the end
     onChange({ ...about, staff: updated });
   }
 
@@ -36,20 +36,6 @@ export default function AboutEditor({ about, onChange }) {
         style={{ marginBottom: "30px" }}
       />
 
-      <button
-        onClick={addStaff}
-        style={{
-          width: "100%", // full width
-          padding: "10px 0", // some vertical padding
-          fontSize: "20px", // a bit bigger
-          borderRadius: "20px",
-          cursor: "pointer",
-          marginBottom: "20px",
-        }}
-      >
-        + Add Staff Member
-      </button>
-
       {about.staff.map((staff, index) => (
         <StaffItemEditor
           key={index}
@@ -60,6 +46,15 @@ export default function AboutEditor({ about, onChange }) {
           onDelete={() => removeStaff(index)}
         />
       ))}
+
+      <button
+        onClick={addStaff}
+        style={{
+          marginBottom: "20px",
+        }}
+      >
+        + Add Staff Member
+      </button>
     </div>
   );
 }
@@ -75,36 +70,31 @@ function StaffItemEditor({ staff, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
-        display: "flex", // make the card a flex container
-        flexDirection: "column", // stack inputs vertically
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <h4>Staff #{total - index}</h4>
-
+      <h4>Staff #{index + 1}</h4> {/* <-- normal ascending numbering */}
       <label>Name</label>
       <input
         value={staff.name}
         onChange={(e) => onChange({ ...staff, name: e.target.value })}
       />
-
       <label>Role</label>
       <input
         value={staff.role}
         onChange={(e) => onChange({ ...staff, role: e.target.value })}
       />
-
       <label>Image URL</label>
       <input
         value={staff.img}
         onChange={(e) => onChange({ ...staff, img: e.target.value })}
       />
-
       <label>Description</label>
       <textarea
         value={staff.description}
         onChange={(e) => onChange({ ...staff, description: e.target.value })}
       />
-
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <button
           onClick={onDelete}
