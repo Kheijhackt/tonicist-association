@@ -12,6 +12,7 @@ import Resources from "./views/Resources";
 import Gallery from "./views/Gallery";
 import Faqs from "./views/Faqs";
 import About from "./views/About";
+import Admin from "./views/Admin";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/faqs" element={<Faqs />} />
               <Route path="/about" element={<About />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </div>
         </div>
