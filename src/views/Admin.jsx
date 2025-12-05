@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HomeEditor from "./admin/components/HomeEditor";
+import EventsEditor from "./admin/components/EventsEditor";
 
 const GIST_ID = import.meta.env.VITE_GIST_ID;
 const FILE_NAME = "tonicist-contents.json";
@@ -56,13 +57,15 @@ export default function Admin() {
     <div style={{ padding: 20 }}>
       <h1>Admin Panel</h1>
 
-      {/* HOME EDITOR */}
       <HomeEditor
         home={data.home}
         onChange={(home) => setData({ ...data, home })}
       />
 
-      {/* OTHER EDITORS WILL FOLLOW */}
+      <EventsEditor
+        events={data.events}
+        onChange={(events) => setData({ ...data, events })}
+      />
 
       <br />
       <br />
