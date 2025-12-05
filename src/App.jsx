@@ -1,7 +1,6 @@
 import "./App.css";
 import NavigationBar from "./components/NavigationBar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { getApi } from "./utils/api";
 import ContentContext from "./utils/ContentContext";
 import Background from "./components/Background";
 
@@ -19,22 +18,21 @@ function App() {
   const [contents, setContents] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const apiEndpoint = `${
-    import.meta.env.VITE_CONTENTS_API
-  }?timestamp=${Date.now()}`;
-
   useEffect(() => {
     async function fetchData() {
-      const data = await getApi(apiEndpoint);
-      if (data) {
+      try {
+        const res = await fetch(`/api/get-gist?timestamp=${Date.now()}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to load content");
         setContents(data);
+      } catch (err) {
+        console.error(err);
       }
       setLoading(false);
     }
     fetchData();
   }, []);
 
-  // DO NOT RENDER ANY PAGE UNTIL CONTENTS EXIST
   if (loading || !contents) {
     return (
       <div

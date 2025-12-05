@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import ContentContext from "../utils/ContentContext";
-import AdminAuth from "./admin/AdminAuth";
+import AdminLogin from "./admin/AdminLogin";
 import HomeEditor from "./admin/components/HomeEditor";
 import EventsEditor from "./admin/components/EventsEditor";
 import PerformancesEditor from "./admin/components/PerformancesEditor";
@@ -10,35 +10,37 @@ import FunnyMomentsEditor from "./admin/components/FunnyMomentsEditor";
 import FaqsEditor from "./admin/components/FaqsEditor";
 import AboutEditor from "./admin/components/AboutEditor";
 
-const GIST_ID = import.meta.env.VITE_GIST_ID;
-const FILE_NAME = "tonicist-contents.json";
-const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
-
 export default function Admin() {
   const contextData = useContext(ContentContext);
   const [authenticated, setAuthenticated] = useState(false);
   const [data, setData] = useState(contextData);
   const [saving, setSaving] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [enteredPassword, setEnteredPassword] = useState(""); // This is the entered password from the user
 
   async function save() {
     setSaving(true);
-    await fetch(`https://api.github.com/gists/${GIST_ID}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        files: {
-          [FILE_NAME]: {
-            content: JSON.stringify(data, null, 2),
-          },
-        },
-      }),
-    });
+    try {
+      const res = await fetch("/api/update-gist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: data,
+          password: enteredPassword,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert("Saved!");
+      } else {
+        alert("Error: " + result.error);
+      }
+    } catch (err) {
+      alert("Error: " + err.message);
+    }
     setSaving(false);
-    alert("Saved!");
   }
 
   const sections = {
@@ -153,7 +155,12 @@ export default function Admin() {
 
       {/* Admin password modal */}
       {!authenticated && (
-        <AdminAuth onAuthenticated={() => setAuthenticated(true)} />
+        <AdminLogin
+          onAuthenticated={(pwd) => {
+            setEnteredPassword(pwd);
+            setAuthenticated(true);
+          }}
+        />
       )}
     </div>
   );

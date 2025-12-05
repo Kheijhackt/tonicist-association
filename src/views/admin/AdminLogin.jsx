@@ -1,16 +1,15 @@
 import { useState } from "react";
+import { isAdminAuthenticated } from "../../../api/admin-auth";
 
 export default function AdminAuth({ onAuthenticated }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
-
   function handleSubmit(e) {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
+    if (isAdminAuthenticated(password)) {
       setError("");
-      onAuthenticated(); // notify parent that password is correct
+      onAuthenticated(password); // notify parent that password is correct
     } else {
       setError("Incorrect password");
     }
