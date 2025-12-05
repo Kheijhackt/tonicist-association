@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import HomeEditor from "./admin/components/HomeEditor";
 import EventsEditor from "./admin/components/EventsEditor";
+import PerformancesEditor from "./admin/components/PerformancesEditor";
 
 const GIST_ID = import.meta.env.VITE_GIST_ID;
 const FILE_NAME = "tonicist-contents.json";
@@ -65,6 +66,11 @@ export default function Admin() {
       <EventsEditor
         events={data.events}
         onChange={(events) => setData({ ...data, events })}
+      />
+
+      <PerformancesEditor
+        performances={data.performances}
+        onChange={(performances) => setData({ ...data, performances })}
       />
 
       <br />
