@@ -4,7 +4,7 @@ import RecitalModal from "../components/RecitalModal";
 import { useContext } from "react";
 import ContentContext from "../utils/ContentContext";
 
-function Recitals() {
+function Performances() {
   const [selected, setSelected] = useState(null);
 
   const rawContents = useContext(ContentContext);
@@ -46,4 +46,4 @@ function Recitals() {
   );
 }
 
-export default Recitals;
+export default Performances;

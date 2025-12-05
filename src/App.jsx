@@ -7,7 +7,7 @@ import Background from "./components/Background";
 
 import Home from "./views/Home";
 import Events from "./views/Events";
-import Recitals from "./views/Recitals";
+import Performances from "./views/Performances";
 import Resources from "./views/Resources";
 import Gallery from "./views/Gallery";
 import Faqs from "./views/Faqs";
@@ -62,7 +62,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/events" element={<Events />} />
-              <Route path="/recitals" element={<Recitals />} />
+              <Route path="/performances" element={<Performances />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/faqs" element={<Faqs />} />

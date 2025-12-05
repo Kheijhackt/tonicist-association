@@ -42,8 +42,8 @@ function NavigationBar() {
             <Nav.Link as={Link} to="/events" style={navStyles}>
               Events
             </Nav.Link>
-            <Nav.Link as={Link} to="/recitals" style={navStyles}>
-              Recitals
+            <Nav.Link as={Link} to="/performances" style={navStyles}>
+              Performances
             </Nav.Link>
             <Nav.Link as={Link} to="/resources" style={navStyles}>
               Resources
