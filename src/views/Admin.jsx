@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
+import ContentContext from "../utils/ContentContext";
+import AdminAuth from "./admin/AdminAuth";
 import HomeEditor from "./admin/components/HomeEditor";
 import EventsEditor from "./admin/components/EventsEditor";
 import PerformancesEditor from "./admin/components/PerformancesEditor";
@@ -13,29 +15,14 @@ const FILE_NAME = "tonicist-contents.json";
 const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 export default function Admin() {
-  const [data, setData] = useState(null);
+  const contextData = useContext(ContentContext);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [data, setData] = useState(contextData);
   const [saving, setSaving] = useState(false);
-  const [activeSection, setActiveSection] = useState("home"); // <- currently active editor
+  const [activeSection, setActiveSection] = useState("home");
 
-  // -----------------------------
-  // 1. FETCH GIST JSON
-  // -----------------------------
-  useEffect(() => {
-    async function load() {
-      const res = await fetch(`https://api.github.com/gists/${GIST_ID}`);
-      const gist = await res.json();
-      const fileContent = gist.files[FILE_NAME].content;
-      setData(JSON.parse(fileContent));
-    }
-    load();
-  }, []);
-
-  // -----------------------------
-  // 2. SAVE GIST JSON
-  // -----------------------------
   async function save() {
     setSaving(true);
-
     await fetch(`https://api.github.com/gists/${GIST_ID}`, {
       method: "PATCH",
       headers: {
@@ -50,16 +37,10 @@ export default function Admin() {
         },
       }),
     });
-
     setSaving(false);
     alert("Saved!");
   }
 
-  if (!data) return;
-
-  // -----------------------------
-  // 3. MAP SECTIONS TO COMPONENTS
-  // -----------------------------
   const sections = {
     home: (
       <HomeEditor
@@ -115,14 +96,11 @@ export default function Admin() {
     ),
   };
 
-  // -----------------------------
-  // 4. RENDER
-  // -----------------------------
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20, position: "relative" }}>
       <h1>Admin Panel</h1>
 
-      {/* Dropdown to select active editor */}
+      {/* Dropdown */}
       <div
         style={{
           display: "flex",
@@ -154,7 +132,7 @@ export default function Admin() {
         </select>
       </div>
 
-      {/* Render only the selected editor */}
+      {/* Active editor */}
       {sections[activeSection]}
 
       <br />
@@ -163,15 +141,20 @@ export default function Admin() {
         onClick={save}
         disabled={saving}
         style={{
-          width: "100%", // full width
-          padding: "10px 0", // some vertical padding
-          fontSize: "20px", // a bit bigger
+          width: "100%",
+          padding: "10px 0",
+          fontSize: "20px",
           borderRadius: "20px",
           cursor: "pointer",
         }}
       >
         {saving ? "Saving..." : "Save All"}
       </button>
+
+      {/* Admin password modal */}
+      {!authenticated && (
+        <AdminAuth onAuthenticated={() => setAuthenticated(true)} />
+      )}
     </div>
   );
 }
