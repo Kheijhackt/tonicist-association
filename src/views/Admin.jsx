@@ -3,6 +3,7 @@ import HomeEditor from "./admin/components/HomeEditor";
 import EventsEditor from "./admin/components/EventsEditor";
 import PerformancesEditor from "./admin/components/PerformancesEditor";
 import ResourcesEditor from "./admin/components/ResourcesEditor";
+import GroupPhotosEditor from "./admin/components/GroupPhotosEditor";
 
 const GIST_ID = import.meta.env.VITE_GIST_ID;
 const FILE_NAME = "tonicist-contents.json";
@@ -77,6 +78,13 @@ export default function Admin() {
       <ResourcesEditor
         resources={data.resources}
         onChange={(resources) => setData({ ...data, resources })}
+      />
+
+      <GroupPhotosEditor
+        groupPhotos={data.gallery.groupPhotos}
+        onChange={(groupPhotos) =>
+          setData({ ...data, gallery: { ...data.gallery, groupPhotos } })
+        }
       />
 
       <br />
