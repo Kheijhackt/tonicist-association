@@ -36,7 +36,17 @@ export default function AboutEditor({ about, onChange }) {
         style={{ marginBottom: "30px" }}
       />
 
-      <button onClick={addStaff} style={{ marginTop: 10, marginBottom: 20 }}>
+      <button
+        onClick={addStaff}
+        style={{
+          width: "100%", // full width
+          padding: "10px 0", // some vertical padding
+          fontSize: "20px", // a bit bigger
+          borderRadius: "20px",
+          cursor: "pointer",
+          marginBottom: "20px",
+        }}
+      >
         + Add Staff Member
       </button>
 
@@ -65,6 +75,8 @@ function StaffItemEditor({ staff, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
+        display: "flex", // make the card a flex container
+        flexDirection: "column", // stack inputs vertically
       }}
     >
       <h4>Staff #{total - index}</h4>
@@ -93,17 +105,19 @@ function StaffItemEditor({ staff, index, total, onChange, onDelete }) {
         onChange={(e) => onChange({ ...staff, description: e.target.value })}
       />
 
-      <button
-        onClick={onDelete}
-        style={{
-          marginTop: 10,
-          backgroundColor: "red",
-          color: "inherit",
-          cursor: "pointer",
-        }}
-      >
-        - Remove
-      </button>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <button
+          onClick={onDelete}
+          style={{
+            marginTop: 10,
+            backgroundColor: "red",
+            color: "inherit",
+            cursor: "pointer",
+          }}
+        >
+          - Remove
+        </button>
+      </div>
     </div>
   );
 }

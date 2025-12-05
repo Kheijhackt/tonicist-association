@@ -35,7 +35,17 @@ export default function FunnyMomentsEditor({ funnyMoments, onChange }) {
         style={{ marginBottom: "30px" }}
       />
 
-      <button onClick={addImage} style={{ marginTop: 10, marginBottom: 20 }}>
+      <button
+        onClick={addImage}
+        style={{
+          width: "100%", // full width
+          padding: "10px 0", // some vertical padding
+          fontSize: "20px", // a bit bigger
+          borderRadius: "20px",
+          cursor: "pointer",
+          marginBottom: "20px",
+        }}
+      >
         + Add Image
       </button>
 
@@ -64,6 +74,8 @@ function ImageItemEditor({ image, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
+        display: "flex", // make the card a flex container
+        flexDirection: "column", // stack inputs vertically
       }}
     >
       <h4>Image #{total - index}</h4>
@@ -86,17 +98,19 @@ function ImageItemEditor({ image, index, total, onChange, onDelete }) {
         onChange={(e) => onChange({ ...image, description: e.target.value })}
       />
 
-      <button
-        onClick={onDelete}
-        style={{
-          marginTop: 10,
-          backgroundColor: "red",
-          color: "inherit",
-          cursor: "pointer",
-        }}
-      >
-        - Remove
-      </button>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <button
+          onClick={onDelete}
+          style={{
+            marginTop: 10,
+            backgroundColor: "red",
+            color: "inherit",
+            cursor: "pointer",
+          }}
+        >
+          - Remove
+        </button>
+      </div>
     </div>
   );
 }

@@ -35,7 +35,17 @@ export default function ResourcesEditor({ resources, onChange }) {
         style={{ marginBottom: "30px" }}
       />
 
-      <button onClick={addItem} style={{ marginTop: 10, marginBottom: 20 }}>
+      <button
+        onClick={addItem}
+        style={{
+          width: "100%", // full width
+          padding: "10px 0", // some vertical padding
+          fontSize: "20px", // a bit bigger
+          borderRadius: "20px",
+          cursor: "pointer",
+          marginBottom: "20px",
+        }}
+      >
         + Add Resource
       </button>
 
@@ -64,6 +74,8 @@ function ResourceItemEditor({ item, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
+        display: "flex", // make the card a flex container
+        flexDirection: "column", // stack inputs vertically
       }}
     >
       <h4>Resource #{total - index}</h4>
@@ -86,17 +98,19 @@ function ResourceItemEditor({ item, index, total, onChange, onDelete }) {
         onChange={(e) => onChange({ ...item, pdfPath: e.target.value })}
       />
 
-      <button
-        onClick={onDelete}
-        style={{
-          marginTop: 10,
-          backgroundColor: "red",
-          color: "inherit",
-          cursor: "pointer",
-        }}
-      >
-        - Remove
-      </button>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <button
+          onClick={onDelete}
+          style={{
+            marginTop: 10,
+            backgroundColor: "red",
+            color: "inherit",
+            cursor: "pointer",
+          }}
+        >
+          - Remove
+        </button>
+      </div>
     </div>
   );
 }
