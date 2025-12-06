@@ -10,7 +10,7 @@ export default function LoadingModal({ visible = true }) {
         trigger="loop"
         stroke="bold"
         state="hover-draw"
-        colors="primary:#ffffff"
+        colors="primary:#25D366"
         style={{ width: "150px", height: "150px" }}
       ></lord-icon>
     </div>
