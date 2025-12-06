@@ -2,7 +2,6 @@
 export default async function handler(req, res) {
   try {
     const url = process.env.CONTENT_API; // environment variable
-    console.log(url);
     if (!url) {
       return res.status(500).json({ error: "CONTENT_API is not defined" });
     }

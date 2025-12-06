@@ -5,7 +5,6 @@ import DisplayGallery from "../components/DisplayGallery";
 function Gallery() {
   const rawContents = useContext(ContentContext);
   const contents = rawContents.gallery;
-  console.log(contents);
 
   return (
     <>
