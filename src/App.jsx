@@ -3,6 +3,7 @@ import NavigationBar from "./components/NavigationBar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ContentContext from "./utils/ContentContext";
 import Background from "./components/Background";
+import LoadingModal from "./components/LoadingModal";
 
 import Home from "./views/Home";
 import Events from "./views/Events";
@@ -33,44 +34,35 @@ function App() {
     fetchData();
   }, []);
 
-  if (loading || !contents) {
-    return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "1.5rem",
-          fontWeight: 600,
-        }}
-      >
-        <h3>Loading...</h3>
-      </div>
-    );
-  }
-
   return (
-    <ContentContext.Provider value={contents}>
-      <Router>
-        <Background />
-        <div className="App" style={{ position: "relative", zIndex: 1 }}>
-          <NavigationBar />
-          <div className="content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/events" element={<Events />} />
-              <Route path="/performances" element={<Performances />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/faqs" element={<Faqs />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/admin" element={<Admin />} />
-            </Routes>
-          </div>
-        </div>
-      </Router>
-    </ContentContext.Provider>
+    <>
+      {/* Show loading modal while fetching */}
+      <LoadingModal visible={loading} />
+
+      {/* Only render app content once loaded */}
+      {!loading && contents && (
+        <ContentContext.Provider value={contents}>
+          <Router>
+            <Background />
+            <div className="App" style={{ position: "relative", zIndex: 1 }}>
+              <NavigationBar />
+              <div className="content">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/events" element={<Events />} />
+                  <Route path="/performances" element={<Performances />} />
+                  <Route path="/resources" element={<Resources />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/faqs" element={<Faqs />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/admin" element={<Admin />} />
+                </Routes>
+              </div>
+            </div>
+          </Router>
+        </ContentContext.Provider>
+      )}
+    </>
   );
 }
 
