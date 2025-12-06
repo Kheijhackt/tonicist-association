@@ -9,6 +9,7 @@ import GroupPhotosEditor from "./admin/components/GroupPhotosEditor";
 import FunnyMomentsEditor from "./admin/components/FunnyMomentsEditor";
 import FaqsEditor from "./admin/components/FaqsEditor";
 import AboutEditor from "./admin/components/AboutEditor";
+import LoadingModal from "../components/LoadingModal";
 
 export default function Admin() {
   const contextData = useContext(ContentContext);
@@ -102,6 +103,7 @@ export default function Admin() {
 
   return (
     <div style={{ padding: 20, position: "relative" }}>
+      <LoadingModal visible={saving} />
       <h1>Admin Panel</h1>
 
       {/* Dropdown */}

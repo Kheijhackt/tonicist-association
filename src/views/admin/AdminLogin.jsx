@@ -1,22 +1,35 @@
+// AdminLogin.jsx
 import { useState } from "react";
+import LoadingModal from "../../components/LoadingModal";
 
-export default function AdminAuth({ onAuthenticated }) {
+export default function AdminLogin({ onAuthenticated }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await fetch("/api/admin-auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-    });
+    setLoading(true);
+    setError("");
 
-    const data = await res.json();
-    if (res.ok && data.authenticated) {
-      onAuthenticated(password);
-    } else {
-      setError("Incorrect password");
+    try {
+      const res = await fetch("/api/admin-auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.authenticated) {
+        onAuthenticated(password);
+      } else {
+        setError("Incorrect password");
+      }
+    } catch (err) {
+      setError("Server error: " + err.message);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -36,6 +49,9 @@ export default function AdminAuth({ onAuthenticated }) {
         zIndex: 1000,
       }}
     >
+      {/* Loading modal overlay */}
+      <LoadingModal visible={loading} />
+
       <div
         style={{
           backgroundColor: "#fff",
@@ -44,9 +60,12 @@ export default function AdminAuth({ onAuthenticated }) {
           width: "350px",
           boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
           textAlign: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <h2 style={{ marginBottom: 20 }}>Enter Admin Password</h2>
+
         <form onSubmit={handleSubmit}>
           <input
             type="password"
@@ -61,10 +80,13 @@ export default function AdminAuth({ onAuthenticated }) {
               border: "1px solid #ccc",
               fontSize: "16px",
             }}
+            disabled={loading}
           />
+
           {error && (
             <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
           )}
+
           <button
             type="submit"
             style={{
@@ -74,6 +96,7 @@ export default function AdminAuth({ onAuthenticated }) {
               fontSize: "16px",
               cursor: "pointer",
             }}
+            disabled={loading}
           >
             Enter
           </button>
