@@ -28,7 +28,7 @@ function NavigationBar() {
         <Navbar.Brand as={Link} to="/" style={brandStyles}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <img
-              src="/tonicist-logo.png"
+              src="/tonicist-icon.jpg"
               alt="Brand Icon"
               style={{ width: "32px", height: "32px", objectFit: "contain" }}
             />
