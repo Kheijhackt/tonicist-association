@@ -6,14 +6,14 @@ export default function FaqsEditor({ faqs, onChange }) {
     onChange({ ...faqs, items: updated });
   }
 
-  // Add new FAQ at top
+  // Add new FAQ at the end
   function addItem() {
     const newItem = {
       question: "",
       answer: "",
       pdfPath: "",
     };
-    const updated = [newItem, ...faqs.items];
+    const updated = [...faqs.items, newItem]; // <-- append at the end
     onChange({ ...faqs, items: updated });
   }
 
@@ -35,30 +35,29 @@ export default function FaqsEditor({ faqs, onChange }) {
         style={{ marginBottom: "30px" }}
       />
 
-      <button
-        onClick={addItem}
-        style={{
-          width: "100%", // full width
-          padding: "10px 0", // some vertical padding
-          fontSize: "20px", // a bit bigger
-          borderRadius: "20px",
-          cursor: "pointer",
-          marginBottom: "20px",
-        }}
-      >
-        + Add FAQ
-      </button>
-
       {faqs.items.map((item, index) => (
         <FaqItemEditor
           key={index}
           index={index}
-          total={faqs.items.length}
           item={item}
           onChange={(v) => updateItem(index, v)}
           onDelete={() => removeItem(index)}
         />
       ))}
+
+      <button
+        onClick={addItem}
+        style={{
+          width: "100%",
+          padding: "10px 0",
+          fontSize: "20px",
+          borderRadius: "20px",
+          cursor: "pointer",
+          marginTop: "20px",
+        }}
+      >
+        + Add FAQ
+      </button>
     </div>
   );
 }
@@ -66,7 +65,7 @@ export default function FaqsEditor({ faqs, onChange }) {
 // -----------------------------------------------------
 // FaqItemEditor (subcomponent)
 // -----------------------------------------------------
-function FaqItemEditor({ item, index, total, onChange, onDelete }) {
+function FaqItemEditor({ item, index, onChange, onDelete }) {
   return (
     <div
       style={{
@@ -74,30 +73,26 @@ function FaqItemEditor({ item, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
-        display: "flex", // make the card a flex container
-        flexDirection: "column", // stack inputs vertically
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <h4>FAQ #{total - index}</h4>
-
+      <h4>FAQ #{index + 1}</h4> {/* ascending numbering */}
       <label>Question</label>
       <input
         value={item.question}
         onChange={(e) => onChange({ ...item, question: e.target.value })}
       />
-
       <label>Answer</label>
       <textarea
         value={item.answer}
         onChange={(e) => onChange({ ...item, answer: e.target.value })}
       />
-
       <label>PDF Path</label>
       <input
         value={item.pdfPath}
         onChange={(e) => onChange({ ...item, pdfPath: e.target.value })}
       />
-
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <button
           onClick={onDelete}
