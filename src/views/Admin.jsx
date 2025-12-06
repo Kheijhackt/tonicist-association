@@ -160,7 +160,7 @@ export default function Admin() {
       {/* Admin password modal */}
       {!authenticated && (
         <AdminLogin
-          isLoading={setLoading}
+          isLoading={(isLoading) => setLoading(isLoading)}
           onAuthenticated={(pwd) => {
             setEnteredPassword(pwd);
             setAuthenticated(true);
