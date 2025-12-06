@@ -2,7 +2,6 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
-import icon from "../assets/tonicist-icon.jpg";
 
 function NavigationBar() {
   const navStyles = {
@@ -29,7 +28,7 @@ function NavigationBar() {
         <Navbar.Brand as={Link} to="/" style={brandStyles}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <img
-              src={icon}
+              src="/tonicist-logo.png"
               alt="Brand Icon"
               style={{ width: "32px", height: "32px", objectFit: "contain" }}
             />
