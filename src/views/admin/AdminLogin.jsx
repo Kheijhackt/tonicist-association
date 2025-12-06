@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { isAdminAuthenticated } from "../../../api/admin-auth";
 
 export default function AdminAuth({ onAuthenticated }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (isAdminAuthenticated(password)) {
-      setError("");
-      onAuthenticated(password); // notify parent that password is correct
+    const res = await fetch("/api/admin-auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+
+    const data = await res.json();
+    if (res.ok && data.authenticated) {
+      onAuthenticated(password);
     } else {
       setError("Incorrect password");
     }
