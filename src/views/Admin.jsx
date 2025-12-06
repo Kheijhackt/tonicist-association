@@ -20,22 +20,24 @@ export default function Admin() {
 
   async function save() {
     setSaving(true);
+    let result = {};
     try {
       const res = await fetch("/api/update-gist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: data,
-          password: enteredPassword,
-        }),
+        body: JSON.stringify({ content: data, password: enteredPassword }),
       });
 
-      const result = await res.json();
+      try {
+        result = await res.json();
+      } catch {
+        result = { error: "Server returned invalid JSON" };
+      }
 
       if (res.ok) {
         alert("Saved!");
       } else {
-        alert("Error: " + result.error);
+        alert("Error: " + (result.error || "Unknown error"));
       }
     } catch (err) {
       alert("Error: " + err.message);
