@@ -159,16 +159,13 @@ export default function Admin() {
 
       {/* Admin password modal */}
       {!authenticated && (
-        <>
-          <LoadingModal visible={loading} />
-          <AdminLogin
-            isLoading={(isLoading) => setLoading(isLoading)}
-            onAuthenticated={(pwd) => {
-              setEnteredPassword(pwd);
-              setAuthenticated(true);
-            }}
-          />
-        </>
+        <AdminLogin
+          isLoading={(isLoading) => setLoading(isLoading)}
+          onAuthenticated={(pwd) => {
+            setEnteredPassword(pwd);
+            setAuthenticated(true);
+          }}
+        />
       )}
     </div>
   );

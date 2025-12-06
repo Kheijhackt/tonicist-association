@@ -7,7 +7,7 @@ export default function AdminLogin({ onAuthenticated, isLoading }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    isLoading(false);
+    isLoading(true);
     setError("");
 
     try {
