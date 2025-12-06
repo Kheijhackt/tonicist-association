@@ -9,10 +9,6 @@ const SocMedIcons = () => {
     ["https://youtube.com/@tonicistassociation?si=0QO-S51ELzSIW9ww", "youtube"],
     ["https://www.facebook.com/profile.php?id=61573432071856", "facebook"],
     ["https://www.instagram.com/tonicistassociation/", "instagram"],
-    [
-      "https://www.threads.net/@tonicistassociation?xmt=AQGzENj5ZuphQKmaG9gdtWXkUfNk25Cgu-di5K3qRdDHmis",
-      "threads",
-    ],
   ];
 
   return (
