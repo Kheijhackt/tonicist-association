@@ -15,12 +15,12 @@ export default function Admin() {
   const contextData = useContext(ContentContext);
   const [authenticated, setAuthenticated] = useState(false);
   const [data, setData] = useState(contextData);
-  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [enteredPassword, setEnteredPassword] = useState(""); // This is the entered password from the user
 
   async function save() {
-    setSaving(true);
+    setLoading(true);
     let result = {};
     try {
       const res = await fetch("/api/update-gist", {
@@ -43,7 +43,7 @@ export default function Admin() {
     } catch (err) {
       alert("Error: " + err.message);
     }
-    setSaving(false);
+    setLoading(false);
   }
 
   const sections = {
@@ -103,7 +103,7 @@ export default function Admin() {
 
   return (
     <div style={{ padding: 20, position: "relative" }}>
-      <LoadingModal visible={saving} />
+      <LoadingModal visible={loading} />
       <h1>Admin Panel</h1>
 
       {/* Dropdown */}
@@ -145,7 +145,7 @@ export default function Admin() {
       <br />
       <button
         onClick={save}
-        disabled={saving}
+        disabled={loading}
         style={{
           width: "100%",
           padding: "10px 0",
@@ -154,12 +154,13 @@ export default function Admin() {
           cursor: "pointer",
         }}
       >
-        {saving ? "Saving..." : "Save All"}
+        {loading ? "Saving..." : "Save All"}
       </button>
 
       {/* Admin password modal */}
       {!authenticated && (
         <AdminLogin
+          isLoading={setLoading}
           onAuthenticated={(pwd) => {
             setEnteredPassword(pwd);
             setAuthenticated(true);

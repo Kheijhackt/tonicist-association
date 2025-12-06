@@ -1,15 +1,13 @@
 // AdminLogin.jsx
 import { useState } from "react";
-import LoadingModal from "../../components/LoadingModal";
 
-export default function AdminLogin({ onAuthenticated }) {
+export default function AdminLogin({ onAuthenticated, isLoading }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
+    isLoading(false);
     setError("");
 
     try {
@@ -29,7 +27,7 @@ export default function AdminLogin({ onAuthenticated }) {
     } catch (err) {
       setError("Server error: " + err.message);
     } finally {
-      setLoading(false);
+      isLoading(false);
     }
   }
 
@@ -49,9 +47,6 @@ export default function AdminLogin({ onAuthenticated }) {
         zIndex: 1000,
       }}
     >
-      {/* Loading modal overlay */}
-      <LoadingModal visible={loading} />
-
       <div
         style={{
           backgroundColor: "#fff",
@@ -80,7 +75,6 @@ export default function AdminLogin({ onAuthenticated }) {
               border: "1px solid #ccc",
               fontSize: "16px",
             }}
-            disabled={loading}
           />
 
           {error && (
@@ -96,7 +90,6 @@ export default function AdminLogin({ onAuthenticated }) {
               fontSize: "16px",
               cursor: "pointer",
             }}
-            disabled={loading}
           >
             Enter
           </button>
