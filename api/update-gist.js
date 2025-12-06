@@ -1,5 +1,5 @@
 // api/update-gist.js
-import { verifyAdminPassword } from "./admin-auth";
+import { verifyAdminPassword } from "./admin-auth.js";
 
 export default async function handler(req, res) {
   console.log("=== update-gist called ===");
