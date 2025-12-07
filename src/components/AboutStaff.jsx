@@ -47,7 +47,9 @@ function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
 
       {/* Description */}
       <div className="about-staff-desc">
-        <p style={{ lineHeight: "1.6" }}>{description}</p>
+        <p style={{ lineHeight: "1.6", whiteSpace: "pre-line" }}>
+          {description}
+        </p>
       </div>
     </div>
   );

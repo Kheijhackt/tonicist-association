@@ -30,7 +30,9 @@ const CollapsibleList = ({ items, fieldMap }) => {
             {/* Content + PDF */}
             {openIndex === index && (
               <div style={styles.content}>
-                <p style={{ marginBottom: "10px" }}>{content}</p>
+                <p style={{ marginBottom: "10px", whiteSpace: "pre-line" }}>
+                  {content}
+                </p>
                 {pdfPath && pdfPath.trim() !== "" && (
                   <iframe
                     src={convertDrivePdfToEmbedLink(pdfPath)}
