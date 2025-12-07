@@ -30,17 +30,20 @@ export default function EventsEditor({ events, onChange }) {
       <label>Timer Goal (ISO Date Format)</label>
       <input
         type="datetime-local"
-        value={events.timerGoal}
+        value={
+          events.timerGoal
+            ? events.timerGoal.slice(0, 16) // "2025-12-08T11:00"
+            : ""
+        }
         onChange={(e) => {
-          const raw = e.target.value; // ex: "2025-12-08T18:00"
+          const raw = e.target.value; // "2025-12-08T11:00"
 
-          // If empty, just update the value normally
           if (!raw) {
             onChange({ ...events, timerGoal: "" });
             return;
           }
 
-          // Append seconds and +08:00 timezone
+          // Convert back into +08:00 full format
           const zoned = `${raw}:00+08:00`;
 
           onChange({ ...events, timerGoal: zoned });
