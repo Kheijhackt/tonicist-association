@@ -27,7 +27,7 @@ export default function EventsEditor({ events, onChange }) {
       />
 
       {/* TIMER GOAL DATE */}
-      <label>Timer Goal (ISO Date Format)</label>
+      <label>Timer Goal (GMT +8)</label>
       <input
         type="datetime-local"
         value={
