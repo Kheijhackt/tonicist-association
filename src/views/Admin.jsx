@@ -10,6 +10,7 @@ import FunnyMomentsEditor from "./admin/components/FunnyMomentsEditor";
 import FaqsEditor from "./admin/components/FaqsEditor";
 import AboutEditor from "./admin/components/AboutEditor";
 import LoadingModal from "../components/LoadingModal";
+import DisplayAlert from "../components/DisplayAlert";
 
 export default function Admin() {
   const contextData = useContext(ContentContext);
@@ -36,12 +37,15 @@ export default function Admin() {
       }
 
       if (res.ok) {
-        alert("Saved!");
+        <DisplayAlert severity="success" message="Saved successfully" />;
       } else {
-        alert("Error: " + (result.error || "Unknown error"));
+        <DisplayAlert
+          severity="error"
+          message={`${result.error || "Unknown error"}`}
+        />;
       }
     } catch (err) {
-      alert("Error: " + err.message);
+      <DisplayAlert severity="error" message={`${err.message}`} />;
     }
     setLoading(false);
   }
