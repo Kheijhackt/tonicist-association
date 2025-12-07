@@ -31,7 +31,20 @@ export default function EventsEditor({ events, onChange }) {
       <input
         type="datetime-local"
         value={events.timerGoal}
-        onChange={(e) => onChange({ ...events, timerGoal: e.target.value })}
+        onChange={(e) => {
+          const raw = e.target.value; // ex: "2025-12-08T18:00"
+
+          // If empty, just update the value normally
+          if (!raw) {
+            onChange({ ...events, timerGoal: "" });
+            return;
+          }
+
+          // Append seconds and +08:00 timezone
+          const zoned = `${raw}:00+08:00`;
+
+          onChange({ ...events, timerGoal: zoned });
+        }}
       />
     </div>
   );
