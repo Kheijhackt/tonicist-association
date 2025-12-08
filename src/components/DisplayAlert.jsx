@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const severityColors = {
   success: "#4caf50",
@@ -7,16 +7,10 @@ const severityColors = {
   info: "#2196f3",
 };
 
-export default function DisplayAlert({ severity, message }) {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setVisible(true);
-  }, []);
+export default function DisplayAlert({ severity, message, visible, onClose }) {
+  if (!visible) return null;
 
   const borderColor = severityColors[severity] || "#2196f3";
-
-  if (!visible) return null;
 
   return (
     <>
@@ -28,7 +22,7 @@ export default function DisplayAlert({ severity, message }) {
           background: "rgba(0,0,0,0.5)",
           zIndex: 100,
         }}
-        onClick={() => setVisible(false)} // closes when clicking outside
+        onClick={onClose} // caller decides what happens
       />
 
       {/* Modal */}
@@ -60,7 +54,7 @@ export default function DisplayAlert({ severity, message }) {
             background: borderColor,
             color: "white",
           }}
-          onClick={() => setVisible(false)}
+          onClick={onClose}
         >
           Okay
         </button>

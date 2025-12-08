@@ -38,15 +38,20 @@ export default function Admin() {
       }
 
       if (res.ok) {
-        setAlert({ severity: "success", message: "Saved successfully" });
+        setAlert({
+          severity: "success",
+          message: "Saved successfully",
+          visible: true,
+        });
       } else {
         setAlert({
           severity: "error",
           message: `${result.error || "Unknown error"}`,
+          visible: true,
         });
       }
     } catch (err) {
-      setAlert({ severity: "error", message: `${err.message}` });
+      setAlert({ severity: "error", message: `${err.message}`, visible: true });
     }
     setLoading(false);
   }
@@ -175,7 +180,12 @@ export default function Admin() {
 
       {/* Alert */}
       {alert && (
-        <DisplayAlert severity={alert.severity} message={alert.message} />
+        <DisplayAlert
+          severity={alert.severity}
+          message={alert.message}
+          visible={alert.visible}
+          onClose={() => setAlert({ ...alert, visible: false })}
+        />
       )}
     </div>
   );
