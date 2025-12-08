@@ -11,6 +11,7 @@ import FaqsEditor from "./admin/components/FaqsEditor";
 import AboutEditor from "./admin/components/AboutEditor";
 import LoadingModal from "../components/LoadingModal";
 import DisplayAlert from "../components/DisplayAlert";
+import AnnouncerEditor from "./admin/components/AnnouncerEditor";
 
 export default function Admin() {
   const contextData = useContext(ContentContext);
@@ -57,6 +58,12 @@ export default function Admin() {
   }
 
   const sections = {
+    announcements: (
+      <AnnouncerEditor
+        announcements={data.announcements}
+        onChange={(announcements) => setData({ ...data, announcements })}
+      />
+    ),
     home: (
       <HomeEditor
         home={data.home}
@@ -137,6 +144,7 @@ export default function Admin() {
             cursor: "pointer",
           }}
         >
+          <option value="announcements">Announcements</option>
           <option value="home">Home</option>
           <option value="events">Events</option>
           <option value="performances">Performances</option>
