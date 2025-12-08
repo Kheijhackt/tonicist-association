@@ -14,6 +14,7 @@ import Faqs from "./views/Faqs";
 import About from "./views/About";
 import Admin from "./views/Admin";
 import { useEffect, useState } from "react";
+import PopupAnnouncer from "./views/admin/components/PopupAnnouncer";
 
 function App() {
   const [contents, setContents] = useState(null);
@@ -42,6 +43,11 @@ function App() {
       {/* Only render app content once loaded */}
       {!loading && contents && (
         <ContentContext.Provider value={contents}>
+          <PopupAnnouncer
+            active={contents.announcements.active}
+            title={contents.announcements.title}
+            message={contents.announcements.message}
+          />
           <Router>
             <Background />
             <div className="App" style={{ position: "relative", zIndex: 1 }}>
