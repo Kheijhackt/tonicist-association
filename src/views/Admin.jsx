@@ -19,6 +19,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [enteredPassword, setEnteredPassword] = useState(""); // This is the entered password from the user
+  const [alert, setAlert] = useState(null);
 
   async function save() {
     setLoading(true);
@@ -37,15 +38,15 @@ export default function Admin() {
       }
 
       if (res.ok) {
-        <DisplayAlert severity="success" message="Saved successfully" />;
+        setAlert({ severity: "success", message: "Saved successfully" });
       } else {
-        <DisplayAlert
-          severity="error"
-          message={`${result.error || "Unknown error"}`}
-        />;
+        setAlert({
+          severity: "error",
+          message: `${result.error || "Unknown error"}`,
+        });
       }
     } catch (err) {
-      <DisplayAlert severity="error" message={`${err.message}`} />;
+      setAlert({ severity: "error", message: `${err.message}` });
     }
     setLoading(false);
   }
@@ -170,6 +171,11 @@ export default function Admin() {
             setAuthenticated(true);
           }}
         />
+      )}
+
+      {/* Alert */}
+      {alert && (
+        <DisplayAlert severity={alert.severity} message={alert.message} />
       )}
     </div>
   );
