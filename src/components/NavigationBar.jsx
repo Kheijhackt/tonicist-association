@@ -47,9 +47,9 @@ function NavigationBar() {
             <Nav.Link as={Link} to="/performances" style={navStyles}>
               Performances
             </Nav.Link>
-            <Nav.Link as={Link} to="/resources" style={navStyles}>
+            {/* <Nav.Link as={Link} to="/resources" style={navStyles}>
               Resources
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link as={Link} to="/gallery" style={navStyles}>
               Gallery
             </Nav.Link>
