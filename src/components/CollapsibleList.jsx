@@ -35,7 +35,7 @@ const CollapsibleList = ({ items, fieldMap }) => {
           <div key={index} style={{ marginBottom: "12px" }}>
             {/* Heading */}
             <div onClick={() => toggleDropdown(index)} style={styles.heading}>
-              <h6>{heading}</h6>
+              <h6 style={{ textAlign: "left" }}>{heading}</h6>
               <span style={{ fontWeight: "bold" }}>
                 {openIndex === index ? "-" : "+"}
               </span>
