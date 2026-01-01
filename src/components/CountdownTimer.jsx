@@ -1,5 +1,15 @@
 import Countdown from "react-countdown";
 
+/**
+ * CountdownTimer component
+ * @param {string} goalDate - Date string for the countdown target in ISO 8601 format (ex: "2025-12-08T18:00:00+08:00")
+ * @returns {React.ReactElement} - JSX element for the CountdownTimer component
+ * @description
+ * A component that displays a countdown timer for a specified goal date.
+ * If the current time is within 2 hours after the event, it shows a text "The event has started!".
+ * If more than 2 hours have passed since the event, it shows nothing.
+ * Otherwise, it displays a countdown in the format "X days Y hours Z minutes W seconds".
+ */
 function CountdownTimer({ goalDate }) {
   // goalDate already includes timezone (ex: "2025-12-08T18:00:00+08:00")
   const eventTime = new Date(goalDate).getTime();

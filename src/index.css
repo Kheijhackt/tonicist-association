@@ -1,12 +1,12 @@
-/* Import Nunito */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+/* Import Font */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap");
 
 :root {
   /* ---- COLOR PALETTE ---- */
-  --green-primary: #25D366;
-  --green-secondary: #128C7E;
-  --green-light: #DCF8C6;
-  --green-dark: #075E54;
+  --green-primary: #25d366;
+  --green-secondary: #128c7e;
+  --green-light: #dcf8c6;
+  --green-dark: #075e54;
 
   --white: #ffffff;
   --background: #f8fef9;
@@ -20,7 +20,7 @@
   --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.08);
 
   /* Font */
-  --font-main: 'Nunito', sans-serif;
+  --font-main: "Nunito", sans-serif;
 }
 
 /* ---- GLOBAL RESET ---- */
@@ -39,7 +39,12 @@ body {
 
 /* ---- BASE TAG STYLES ---- */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 800;
   color: var(--green-dark);
   margin-bottom: 12px;
@@ -80,7 +85,8 @@ button:hover {
   background-color: var(--green-secondary);
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px 14px;
   border-radius: 6px;
@@ -90,7 +96,8 @@ input, textarea {
   box-shadow: var(--shadow-soft);
 }
 
-ul, ol {
+ul,
+ol {
   margin: 12px 0 12px 20px;
 }
 

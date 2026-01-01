@@ -1,3 +1,9 @@
+/**
+ * Converts a Google Drive link to an embed link for PDF preview.
+ * If the input is not a Google Drive link, returns the original link.
+ * @param {string} driveLink - the Google Drive link to convert
+ * @returns {string} - the converted embed link for PDF preview
+ */
 export function convertDrivePdfToEmbedLink(driveLink) {
   if (!driveLink) return "";
 
@@ -15,6 +21,12 @@ export function convertDrivePdfToEmbedLink(driveLink) {
   return `https://drive.google.com/file/d/${fileId}/preview`;
 }
 
+/**
+ * Converts a Google Drive link to an embed link for image preview.
+ * If the input is not a Google Drive link, returns the original link.
+ * @param {string} driveLink - the Google Drive link to convert
+ * @returns {string} - the converted embed link for image preview
+ */
 export function convertDriveImageToEmbedLink(driveLink) {
   if (!driveLink) return "";
 

@@ -1,3 +1,10 @@
+/**
+ * Footer component
+ * NOT IN USE
+ * @returns {React.ReactElement} - JSX element for the Footer component
+ * @description
+ * A component that displays the footer of the website, including the copyright information.
+ */
 function Footer() {
   const footerStyle = {
     fontFamily: "'Nunito', sans-serif",

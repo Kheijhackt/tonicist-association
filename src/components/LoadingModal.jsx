@@ -2,6 +2,12 @@
 import React from "react";
 import "../styles/LoadingModal.css";
 
+/**
+ * A loading modal component that displays a loading animation.
+ * The component takes an optional 'visible' prop which defaults to true.
+ * If visible is true, the component will be displayed.
+ * If visible is false, the component will be hidden.
+ */
 export default function LoadingModal({ visible = true }) {
   return (
     <div className={`loading-modal ${visible ? "visible" : ""}`}>

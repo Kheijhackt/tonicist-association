@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
 
+/**
+ * DisplayGallery component
+ * @param {Array<{img: string, title: string, description: string}>} images - Array of objects containing image URL, title, and description
+ * @returns {React.ReactElement} - JSX element for the DisplayGallery component
+ * @description
+ * A component to display a gallery of images with titles and descriptions.
+ * Each image is clickable and opens a modal with the full image and description.
+ * The modal is draggable and can be closed by clicking outside or pressing the Escape key.
+ * The gallery is also navigable using the left and right arrow keys.
+ */
 export default function DisplayGallery({ images }) {
   const [currentIndex, setCurrentIndex] = useState(null);
   const [startX, setStartX] = useState(null);
@@ -96,7 +106,7 @@ export default function DisplayGallery({ images }) {
               cursor: "pointer",
               borderRadius: 6,
               objectFit: "cover",
-              transition: "transform 0.3s ease", // smooth scaling
+              transition: "transform 0.3s ease",
             }}
             onClick={() => openModal(idx)}
             onMouseEnter={(e) =>
@@ -131,8 +141,8 @@ export default function DisplayGallery({ images }) {
           <div
             style={{
               position: "absolute",
-              top: "2.5%", // 10% from top
-              left: "50%", // center horizontally
+              top: "2.5%",
+              left: "50%",
               transform: "translateX(-50%)",
               color: "#aaa",
               fontSize: 14,

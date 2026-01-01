@@ -1,6 +1,15 @@
 import React from "react";
 import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
 
+/**
+ * A component that displays a background image with an overlay.
+ * The background image is retrieved from Google Drive using the provided path.
+ * The overlay is a semi-transparent white color that helps the content stand out.
+ * The component stays behind all other JSX elements due to its negative zIndex.
+ *
+ * @param {{String}} photoPath - the path to the background image in Google Drive
+ * @returns {React.ReactElement} - the JSX element for the BackgroundImage component
+ */
 const BackgroundImage = ({ photoPath }) => {
   if (photoPath) photoPath = convertDriveImageToEmbedLink(photoPath);
 

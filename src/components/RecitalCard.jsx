@@ -1,5 +1,17 @@
 import React from "react";
 
+/**
+ * RecitalCard component
+ * @param {string} videoId - YouTube video ID
+ * @param {string} title - title of the recital
+ * @param {string} date - date of the recital
+ * @param {function} onClick - function to call when the card is clicked
+ * @returns {React.ReactElement} - JSX element for the RecitalCard component
+ * @description
+ * A component that displays a single recital card with a thumbnail, title, and date.
+ * When the card is clicked or Enter is pressed, it calls the provided onClick function.
+ * The card has a hover effect that scales it to 1.03 when the mouse is over it.
+ */
 export default function RecitalCard({ videoId, title, date, onClick }) {
   const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
@@ -31,8 +43,17 @@ export default function RecitalCard({ videoId, title, date, onClick }) {
       />
 
       <div style={{ padding: "12px" }}>
-        <h4 style={{ margin: "0 0 8px 0", fontWeight: 700, textAlign: "left" }}>{title}</h4>
-        <p style={{ margin: 0, fontWeight: 600, color: "var(--green-dark)", textAlign: "right" }}>
+        <h4 style={{ margin: "0 0 8px 0", fontWeight: 700, textAlign: "left" }}>
+          {title}
+        </h4>
+        <p
+          style={{
+            margin: 0,
+            fontWeight: 600,
+            color: "var(--green-dark)",
+            textAlign: "right",
+          }}
+        >
           {date}
         </p>
       </div>

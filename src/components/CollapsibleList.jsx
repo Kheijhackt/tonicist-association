@@ -1,6 +1,20 @@
 import { useState } from "react";
 import { convertDrivePdfToEmbedLink } from "../utils/linksCleaner";
 
+/**
+ * CollapsibleList component
+ * @param {Object} props - Component props
+ * @param {Array} props.items - Array of items to be displayed in the list
+ * @param {Object} props.fieldMap - Map of field names to their corresponding key in the item object
+ * @returns {React.ReactElement} - JSX element for the CollapsibleList component
+ * @example
+ * const items = [
+ *   { question: "What is the capital of France?", answer: "Paris" },
+ *   { title: "Hello World", textContent: "This is a sample text" },
+ * ];
+ * const fieldMap = { heading: "question", content: "answer" };
+ * const List = <CollapsibleList items={items} fieldMap={fieldMap} />;
+ */
 const CollapsibleList = ({ items, fieldMap }) => {
   // fieldMap = { heading: "question" or "title", content: "answer" or "textContent", pdf: "pdfPath" }
 

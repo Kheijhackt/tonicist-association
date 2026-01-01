@@ -1,5 +1,12 @@
 import { SocialIcon } from "react-social-icons";
 
+/**
+ * A component that displays social media icons with links to Tonicist Association's profiles.
+ *
+ * @returns {React.ReactElement} - JSX element for the SocMedIcons component
+ * @example
+ * const SocMedIcons = <SocMedIcons />;
+ */
 const SocMedIcons = () => {
   const socialLinks = [
     [

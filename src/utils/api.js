@@ -1,3 +1,13 @@
+/**
+ * Fetches data from a given API endpoint.
+ *
+ * @param {string} endpoint - URL of the API endpoint.
+ *
+ * @returns {Promise<object>} - Promise that resolves with the fetched data, or null if there's an error.
+ *
+ * @throws {Error} - If there's an HTTP error.
+ */
+
 export async function getApi(endpoint) {
   try {
     const response = await fetch(endpoint);

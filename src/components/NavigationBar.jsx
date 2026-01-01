@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
 
+/**
+ * A navigation bar component that displays the main navigation links of the website.
+ */
 function NavigationBar() {
   const navStyles = {
     fontFamily: "'Nunito', sans-serif",

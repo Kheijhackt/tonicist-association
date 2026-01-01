@@ -7,6 +7,18 @@ const severityColors = {
   info: "#2196f3",
 };
 
+/**
+ * DisplayAlert is a component that displays a modal alert with a given severity and message.
+ * It also takes an onClose function that is called when the user clicks the overlay or the "Okay" button.
+ * The component is hidden if the visible prop is false.
+ * The severity prop should be one of the following strings: success, error, warning, info.
+ * If the severity prop is not recognized, the component will use the info color by default.
+ * The component is fully accessible and follows best practices for alert dialogs.
+ * @param {string} severity - the severity of the alert (success, error, warning, info)
+ * @param {string} message - the message of the alert
+ * @param {boolean} visible - whether the component is visible or not
+ * @param {function} onClose - the function to be called when the user closes the alert
+ */
 export default function DisplayAlert({ severity, message, visible, onClose }) {
   if (!visible) return null;
 

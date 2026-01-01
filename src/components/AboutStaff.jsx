@@ -1,6 +1,16 @@
 import "../styles/AboutStaff.css";
 import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
 
+/**
+ * AboutStaff component
+ * @param {string} imgSrc - URL of the staff member's image
+ * @param {string} name - Name of the staff member
+ * @param {string} role - Role of the staff member
+ * @param {string} description - Short description of the staff member
+ * @param {string} picPosition - "left" or "right" to position the image
+ * @returns {React.ReactElement} - JSX element for the AboutStaff component
+ */
+
 function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
   const isLeft = picPosition === "left";
 

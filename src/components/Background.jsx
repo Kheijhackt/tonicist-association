@@ -4,6 +4,13 @@ import "../styles/Background.css";
 // const notes = ["🎵", "🎶", "♩", "♪"]; // musical notes
 const notes = ["🎵", "🎶", "♩", "♪", "🎼", "🎹", "🎷", "🎺", "🎻"];
 
+/**
+ * Background component renders a background with falling musical notes.
+ * The notes are randomly generated and start falling from the top of the page.
+ * The notes are also randomly sized and have a random delay before falling.
+ * The component uses the useState hook to store the notes and the useEffect hook to
+ * generate the initial notes and update the state when the component mounts.
+ */
 function Background() {
   const [particles, setParticles] = useState([]);
 

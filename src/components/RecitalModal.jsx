@@ -1,5 +1,18 @@
 import { convertDrivePdfToEmbedLink } from "../utils/linksCleaner";
 
+/**
+ * RecitalModal component
+ * @param {string} videoId - YouTube video ID
+ * @param {string} title - title of the recital
+ * @param {string} date - date of the recital
+ * @param {string} description - description of the recital
+ * @param {string} pdfPath - path to the PDF file in Google Drive
+ * @param {function} onClose - function to call when the modal is closed
+ * @returns {React.ReactElement} - JSX element for the RecitalModal component
+ * @description
+ * A modal component that displays a YouTube video, title, date, description, and PDF file (if provided)
+ * When the modal is closed or the user clicks outside of the modal, it calls the provided onClose function
+ */
 function RecitalModal({ videoId, title, date, description, pdfPath, onClose }) {
   if (!videoId) return null;
   pdfPath = pdfPath ? convertDrivePdfToEmbedLink(pdfPath) : null;
