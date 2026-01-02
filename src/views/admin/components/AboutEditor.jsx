@@ -14,7 +14,7 @@ export default function AboutEditor({ about, onChange }) {
       img: "",
       description: "",
     };
-    const updated = [...about.staff, newStaff]; // <-- append at the end
+    const updated = [...about.staff, newStaff]; // append at the end
     onChange({ ...about, staff: updated });
   }
 
@@ -74,7 +74,7 @@ function StaffItemEditor({ staff, index, total, onChange, onDelete }) {
         flexDirection: "column",
       }}
     >
-      <h4>Staff #{index + 1}</h4> {/* <-- normal ascending numbering */}
+      <h4>Staff #{index + 1}</h4>
       <label>Name</label>
       <input
         value={staff.name}

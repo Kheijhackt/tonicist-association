@@ -39,9 +39,9 @@ export default function PerformancesEditor({ performances, onChange }) {
       <button
         onClick={addVideo}
         style={{
-          width: "100%", // full width
-          padding: "10px 0", // some vertical padding
-          fontSize: "20px", // a bit bigger
+          width: "100%",
+          padding: "10px 0",
+          fontSize: "20px",
           borderRadius: "20px",
           cursor: "pointer",
           marginBottom: "20px",
@@ -55,7 +55,7 @@ export default function PerformancesEditor({ performances, onChange }) {
           key={index}
           index={index}
           video={video}
-          total={performances.videos.length} // <-- pass total here
+          total={performances.videos.length}
           onChange={(v) => updateVideo(index, v)}
           onDelete={() => removeVideo(index)}
         />
@@ -75,8 +75,8 @@ function VideoItemEditor({ video, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
-        display: "flex", // make the card a flex container
-        flexDirection: "column", // stack inputs vertically
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <h4>Video #{total - index}</h4>

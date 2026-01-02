@@ -38,9 +38,9 @@ export default function ResourcesEditor({ resources, onChange }) {
       <button
         onClick={addItem}
         style={{
-          width: "100%", // full width
-          padding: "10px 0", // some vertical padding
-          fontSize: "20px", // a bit bigger
+          width: "100%",
+          padding: "10px 0",
+          fontSize: "20px",
           borderRadius: "20px",
           cursor: "pointer",
           marginBottom: "20px",
@@ -74,8 +74,8 @@ function ResourceItemEditor({ item, index, total, onChange, onDelete }) {
         padding: 15,
         marginBottom: 10,
         borderRadius: 8,
-        display: "flex", // make the card a flex container
-        flexDirection: "column", // stack inputs vertically
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <h4>Resource #{total - index}</h4>

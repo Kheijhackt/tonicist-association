@@ -94,7 +94,7 @@ export default function PopupAnnouncer({ title, message, active }) {
             padding: "16px 20px",
             overflowY: "auto",
             flexGrow: 1,
-            whiteSpace: "pre-wrap", // preserves \n from JSON
+            whiteSpace: "pre-wrap",
           }}
         >
           {message}

@@ -13,7 +13,7 @@ export default function FaqsEditor({ faqs, onChange }) {
       answer: "",
       pdfPath: "",
     };
-    const updated = [...faqs.items, newItem]; // <-- append at the end
+    const updated = [...faqs.items, newItem]; // append at the end
     onChange({ ...faqs, items: updated });
   }
 
@@ -77,7 +77,7 @@ function FaqItemEditor({ item, index, onChange, onDelete }) {
         flexDirection: "column",
       }}
     >
-      <h4>FAQ #{index + 1}</h4> {/* ascending numbering */}
+      <h4>FAQ #{index + 1}</h4>
       <label>Question</label>
       <input
         value={item.question}
