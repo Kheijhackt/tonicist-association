@@ -102,7 +102,7 @@ export default function DisplayGallery({ images }) {
             alt={item.title}
             style={{
               width: 200,
-              height: "auto",
+              height: 200,
               cursor: "pointer",
               borderRadius: 6,
               objectFit: "cover",
