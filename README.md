@@ -32,3 +32,8 @@ Uncommitted changes are changes where it's just saved using ctrl s ahhahahaha.
 Committed changes are changes were we add a commit title to it, just like on the changes you see on the lower left. That means, we can never push to the cloud repository with just uncommitted changes. That's why even when I save this using ctrl s, it's not being updated there yet. Because this is still uncommitted. It's like, I just saved the file right now, but haven't committed it yet.
 
 So first, we save the file right?? So now this readme file is uncommitted.
+
+It's okayy nowwwww hahahahhh.
+
+By the way you'd notice these two icons. There a blue and purple icon cloud.
+The blue one is your local commits. The purple one is the remote commits. This shows if your current repository is outdated, or if the remote is the one outdated if you have new changes. Cause look let's experiment something. I'll save this file and commit it.
