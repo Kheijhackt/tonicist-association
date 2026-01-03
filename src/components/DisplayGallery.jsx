@@ -13,9 +13,6 @@ import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
  */
 export default function DisplayGallery({ images }) {
   const [currentIndex, setCurrentIndex] = useState(null);
-  const [startX, setStartX] = useState(null);
-  const [translateX, setTranslateX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
 
   if (!images || images.length === 0) {
     return;
@@ -48,41 +45,6 @@ export default function DisplayGallery({ images }) {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [currentIndex]);
-
-  // Touch & Mouse event handlers
-  const handleTouchStart = (e) => {
-    setStartX(e.touches[0].clientX);
-    setIsDragging(true);
-  };
-  const handleTouchMove = (e) => {
-    if (!isDragging) return;
-    setTranslateX(e.touches[0].clientX - startX);
-  };
-  const handleTouchEnd = (e) => {
-    if (!isDragging) return;
-    const deltaX = e.changedTouches[0].clientX - startX;
-    if (deltaX > 50) prevImage();
-    else if (deltaX < -50) nextImage();
-    setTranslateX(0);
-    setIsDragging(false);
-  };
-
-  const handleMouseDown = (e) => {
-    setStartX(e.clientX);
-    setIsDragging(true);
-  };
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    setTranslateX(e.clientX - startX);
-  };
-  const handleMouseUp = (e) => {
-    if (!isDragging) return;
-    const deltaX = e.clientX - startX;
-    if (deltaX > 50) prevImage();
-    else if (deltaX < -50) nextImage();
-    setTranslateX(0);
-    setIsDragging(false);
-  };
 
   return (
     <div style={{ padding: 20 }}>
@@ -144,31 +106,60 @@ export default function DisplayGallery({ images }) {
               top: "2.5%",
               left: "50%",
               transform: "translateX(-50%)",
+              display: "flex",
+              alignItems: "center",
+              gap: 24,
               color: "#aaa",
-              fontSize: 14,
-              textAlign: "center",
+              fontSize: 16,
               zIndex: 10000,
+              userSelect: "none",
             }}
           >
-            {currentIndex + 1} / {images.length}
+            {/* Left */}
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              style={{
+                cursor: "pointer",
+                fontSize: 30,
+                paddingRight: 20,
+                color: "#fff",
+              }}
+            >
+              {"<"}
+            </span>
+
+            {/* Counter */}
+            <span>
+              {currentIndex + 1} / {images.length}
+            </span>
+
+            {/* Right */}
+            <span
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              style={{
+                cursor: "pointer",
+                fontSize: 30,
+                paddingLeft: 20,
+                color: "#fff",
+              }}
+            >
+              {">"}
+            </span>
           </div>
 
           <div
             onClick={(e) => e.stopPropagation()}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               maxWidth: "90%",
-              transform: `translateX(${translateX}px)`,
-              transition: isDragging ? "none" : "transform 0.3s ease",
             }}
           >
             {/* Title */}
