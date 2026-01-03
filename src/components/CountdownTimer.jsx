@@ -10,7 +10,7 @@ import Countdown from "react-countdown";
  * If more than 2 hours have passed since the event, it shows nothing.
  * Otherwise, it displays a countdown in the format "X days Y hours Z minutes W seconds".
  */
-function CountdownTimer({ goalDate }) {
+function CountdownTimer({ goalDate, countdownTitle }) {
   // goalDate already includes timezone (ex: "2025-12-08T18:00:00+08:00")
   const eventTime = new Date(goalDate).getTime();
   const twoHours = 2 * 60 * 60 * 1000;
@@ -34,21 +34,24 @@ function CountdownTimer({ goalDate }) {
 
     // Otherwise → countdown
     return (
-      <div
-        style={{
-          display: "flex",
-          gap: "15px",
-          fontFamily: "'Nunito', sans-serif",
-          fontWeight: 800,
-          color: "var(--green-dark)",
-          fontSize: "2rem",
-        }}
-      >
-        <span>{days}d</span>
-        <span>{hours}h</span>
-        <span>{minutes}m</span>
-        <span>{seconds}s</span>
-      </div>
+      <>
+        <h4>{countdownTitle}</h4>
+        <div
+          style={{
+            display: "flex",
+            gap: "15px",
+            fontFamily: "'Nunito', sans-serif",
+            fontWeight: 800,
+            color: "var(--green-dark)",
+            fontSize: "2rem",
+          }}
+        >
+          <span>{days}d</span>
+          <span>{hours}h</span>
+          <span>{minutes}m</span>
+          <span>{seconds}s</span>
+        </div>
+      </>
     );
   };
 

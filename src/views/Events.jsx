@@ -3,7 +3,7 @@ import ContentContext from "../utils/ContentContext";
 import CountdownTimer from "../components/CountdownTimer";
 
 function Events() {
-  const rawContents = useContext(ContentContext);  
+  const rawContents = useContext(ContentContext);
   const contents = rawContents.events;
 
   return (
@@ -21,8 +21,8 @@ function Events() {
         src={contents.googleCalendarUrl}
         style={{
           width: "100%",
-          maxWidth: "800px",    // max width on large screens
-          height: "500px",      // fixed height
+          maxWidth: "800px", // max width on large screens
+          height: "500px", // fixed height
           border: "0",
           borderRadius: "12px",
         }}
@@ -31,8 +31,10 @@ function Events() {
       <br />
       {contents.timerText && contents.timerGoal && (
         <>
-          <h4>{contents.timerText}</h4>
-          <CountdownTimer goalDate={contents.timerGoal} />
+          <CountdownTimer
+            goalDate={contents.timerGoal}
+            countdownTitle={contents.timerText}
+          />
         </>
       )}
     </div>
