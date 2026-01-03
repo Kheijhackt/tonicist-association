@@ -38,3 +38,5 @@ It's okayy nowwwww hahahahhh.
 By the way you'd notice these two icons. There a blue and purple icon cloud.
 The blue one is your local commits. The purple one is the remote commits. This shows if your current repository is outdated, or if the remote is the one outdated if you have new changes. Cause look let's experiment something. I'll save this file and commit it.
 Thank you my prof dr.Kian finally done yayyyyyy that's gooooood.
+hiiiii thats nice you saw it 
+yayyyyyyyyyyyyyyyyyyyyyyy
