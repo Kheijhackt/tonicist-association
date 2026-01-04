@@ -30,21 +30,23 @@ function App() {
       } catch (err) {
         console.error(err);
       }
+      setLoading(false);
+    }
 
-      // For fetching website count
+    async function updateVisitCount() {
+      // For updating website count
       try {
         const res = await fetch("/api/update-visitCount");
         const data = await res.json();
-        console.log(data);
         if (!res.ok)
           throw new Error(data.error || "Failed to update visit count");
       } catch (err) {
         console.error(err);
       }
-
-      setLoading(false);
     }
+
     fetchData();
+    updateVisitCount();
   }, []);
 
   return (
