@@ -12,9 +12,9 @@ export default function AboutEditor({ about, onChange }) {
       name: "",
       role: "",
       img: "",
-      description: "",
+      // description removed
     };
-    const updated = [...about.staff, newStaff]; // append at the end
+    const updated = [...about.staff, newStaff];
     onChange({ ...about, staff: updated });
   }
 
@@ -33,6 +33,14 @@ export default function AboutEditor({ about, onChange }) {
       <input
         value={about.title}
         onChange={(e) => onChange({ ...about, title: e.target.value })}
+        style={{ marginBottom: "20px" }}
+      />
+
+      {/* NEW GLOBAL DESCRIPTION */}
+      <label>Description</label>
+      <textarea
+        value={about.description || ""}
+        onChange={(e) => onChange({ ...about, description: e.target.value })}
         style={{ marginBottom: "30px" }}
       />
 
@@ -90,11 +98,9 @@ function StaffItemEditor({ staff, index, total, onChange, onDelete }) {
         value={staff.img}
         onChange={(e) => onChange({ ...staff, img: e.target.value })}
       />
-      <label>Description</label>
-      <textarea
-        value={staff.description}
-        onChange={(e) => onChange({ ...staff, description: e.target.value })}
-      />
+
+      {/* Removed Description input */}
+
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <button
           onClick={onDelete}
