@@ -13,16 +13,16 @@ function About() {
         {contents.title}
       </h1>
 
-      {staffMembers.map((member, index) => (
-        <AboutStaff
-          key={index}
-          imgSrc={member.img}
-          name={member.name}
-          role={member.role}
-          description={member.description}
-          picPosition={index % 2 === 0 ? "left" : "right"} // alternates left/right
-        />
-      ))}
+      <div style={{ textAlign: "center" }}>
+        {staffMembers.map((member, index) => (
+          <AboutStaff
+            key={index}
+            imgSrc={member.img}
+            name={member.name}
+            role={member.role}
+          />
+        ))}
+      </div>
     </>
   );
 }
