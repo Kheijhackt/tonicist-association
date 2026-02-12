@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Visitor Counter</title>
+  <style>
+    body { font-family: "Nunito", sans-serif; padding: 40px; }
+    #count { font-size: 26px; margin-top: 20px; }
+  </style>
+</head>
+<!-- Visitor counter box -->
+<div id="visitor-counter"></div>
+
+<style>
+  #visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 22px;
+    background: #008653;
+    color: rgba(255, 255, 255, 0.904);
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-family: "Nunito", sans-serif;
+    z-index: 9999;
+  }
+</style> 
+
+<script>
+  async function showVisitorCount() {
+    try {
+      const res = await fetch('/api/visit'); // call your server API
+      const data = await res.json();
+      document.getElementById('visitor-counter').innerText =
+        'Visitors: ' + data.count;
+    } catch (e) {
+      document.getElementById('visitor-counter').innerText =
+        'Visitors: error';
+      console.error(e);
+    }
+  }
+
+  showVisitorCount(); // run immediately on page load
+</script>
+<body>
+  <script>
+    // 🔹 AUTO count when page loads
+    async function countVisit() {
+      try {
+        const res = await fetch('/visit');
+        const data = await res.json();
+        document.getElementById('count').innerText =
+          'Total visitors: ' + data.count;
+      } catch {
+        document.getElementById('count').innerText =
+          'Error loading visitor count';
+      }
+    }
+
+    countVisit(); // run immediately on page load
+  </script>
+</body>
+</html>
