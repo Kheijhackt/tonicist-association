@@ -171,7 +171,7 @@ export default function DisplayGallery({ images }) {
 
             {/* Image */}
             <img
-              src={images[currentIndex].img}
+              src={convertDriveImageToEmbedLink(images[currentIndex].img)}
               alt={images[currentIndex].title}
               style={{
                 maxWidth: "80vw",
