@@ -3,27 +3,15 @@ import { convertDriveImageToEmbedLink } from "../utils/linksCleaner";
 
 /**
  * AboutStaff component
- * @param {string} imgSrc - URL of the staff member's image
- * @param {string} name - Name of the staff member
- * @param {string} role - Role of the staff member
- * @param {string} description - Short description of the staff member
- * @param {string} picPosition - "left" or "right" to position the image
- * @returns {React.ReactElement} - JSX element for the AboutStaff component
+ * Description and left/right removed.
+ * Parent props are safely ignored.
  */
 
-function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
-  const isLeft = picPosition === "left";
-
+function AboutStaff({ imgSrc, name, role }) {
   if (imgSrc) imgSrc = convertDriveImageToEmbedLink(imgSrc);
 
   return (
-    <div
-      className="about-staff-container"
-      style={{
-        flexDirection: isLeft ? "row" : "row-reverse",
-      }}
-    >
-      {/* Picture + Name + Role */}
+    <div className="about-staff-container">
       <div className="about-staff-info">
         <img
           src={imgSrc}
@@ -52,13 +40,6 @@ function AboutStaff({ imgSrc, name, role, description, picPosition = "left" }) {
           }}
         >
           {name}
-        </p>
-      </div>
-
-      {/* Description */}
-      <div className="about-staff-desc">
-        <p style={{ lineHeight: "1.6", whiteSpace: "pre-line" }}>
-          {description}
         </p>
       </div>
     </div>
