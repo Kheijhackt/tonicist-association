@@ -11,6 +11,7 @@ import Performances from "./views/Performances";
 import Resources from "./views/Resources";
 import Gallery from "./views/Gallery";
 import Faqs from "./views/Faqs";
+import Assistant from "./views/Assistant";
 import About from "./views/About";
 import Admin from "./views/Admin";
 import { useEffect, useState } from "react";
@@ -74,6 +75,7 @@ function App() {
                   <Route path="/resources" element={<Resources />} />
                   <Route path="/gallery" element={<Gallery />} />
                   <Route path="/faqs" element={<Faqs />} />
+                  <Route path="/assistant" element={<Assistant />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/admin" element={<Admin />} />
                 </Routes>
