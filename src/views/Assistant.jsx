@@ -82,23 +82,20 @@ ${faqText}
         max_tokens: 500,
       };
 
-      const response = await fetch(
-        "https://hermes.ai.unturf.com/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Any",
-          },
-          body: JSON.stringify(payload),
+      const response = await fetch("/api/assistant-response", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          messages: updatedMessages,
+          systemPrompt,
+        }),
+      });
 
       const data = await response.json();
 
-      const assistantReply =
-        data?.choices?.[0]?.message?.content ||
-        "I couldn't generate a response.";
+      const assistantReply = data?.reply || "I couldn't generate a response.";
 
       setMessages((prev) => [
         ...prev,
