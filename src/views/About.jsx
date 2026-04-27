@@ -21,6 +21,7 @@ function About() {
             margin: "0 auto 60px",
             lineHeight: "1.6",
             color: "var(--green-dark)",
+            whiteSpace: "pre-line",
           }}
         >
           {contents.description}
